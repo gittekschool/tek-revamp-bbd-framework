@@ -42,7 +42,7 @@ public class BaseSetup {
 			EdgeBrowser edge = new EdgeBrowser();
 			driver = edge.openBrowser(url);
 			break;
-		default: 
+		default:
 			throw new RuntimeException("Env Config have wrong browser Type check Env Config");
 		}
 
@@ -50,6 +50,12 @@ public class BaseSetup {
 		driver.manage().window().maximize();
 	}
 
+	public void quitBrowser() {
+		if (driver != null) {
+			driver.quit();
+		}
+	}
+	
 	public WebDriver getDriver() {
 		return driver;
 	}

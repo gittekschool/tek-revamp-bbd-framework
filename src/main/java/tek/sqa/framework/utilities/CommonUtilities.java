@@ -2,6 +2,7 @@ package tek.sqa.framework.utilities;
 
 import java.time.Duration;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -55,6 +56,21 @@ public class CommonUtilities extends BaseSetup {
 		return getWait().until(ExpectedConditions.visibilityOf(element)).getText();
 	}
 	
+	public String getElementText(By element) {
+		return getWait().until(ExpectedConditions.visibilityOfElementLocated(element)).getText();
+	}
+	
+	/**
+	 * Send Keys to Element By Locator. 
+	 * 
+	 * @param element  By
+	 * @param value   String to sendKeys
+	 */
+	public void sendTextToInput(By element, String value) {
+		WebElement input = getWait().until(ExpectedConditions.visibilityOfElementLocated(element));
+		input.sendKeys(value);
+	}
+	
 	/**
 	 * JavaScript Executor for Scrolling down to the pixels
 	 * @param pixels value of pixels
@@ -63,6 +79,19 @@ public class CommonUtilities extends BaseSetup {
 		//Cast Driver to JavascriptExecutor. 
 		JavascriptExecutor js = (JavascriptExecutor) getDriver();
 		
-		js.executeScript("scroll(0, argumanets[0]);", pixels);
+		js.executeScript("scroll(0, arguments[0]);", pixels);
 	}
+	
+	
+	public void assertEqual(String expected, String actual) {
+		Assert.assertEquals(expected, actual);
+	}
+	
+	public void assertElementDisabled(By elementLocator) {
+		WebElement element = getWait().until(ExpectedConditions.visibilityOfElementLocated(elementLocator));
+		//element.isEnables. will return true if that element is enable otherwise will return false. 
+		Assert.assertFalse("Element should be disabled", element.isEnabled());
+	
+	}
+	
 }
