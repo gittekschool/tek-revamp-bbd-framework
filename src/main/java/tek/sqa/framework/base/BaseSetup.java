@@ -33,9 +33,11 @@ public class BaseSetup {
 	public void setupBrowser() {
 		HashMap<String, Object> uiVariables = environmentVariables.getProprty("ui");
 		String url = uiVariables.get("url").toString();
+		
 		switch (uiVariables.get("browser").toString().toLowerCase()) {
 		case "chrome":
-			ChromeBrowser chrome = new ChromeBrowser();
+			boolean headless = (boolean) uiVariables.get("headless");
+			ChromeBrowser chrome = new ChromeBrowser(headless);
 			driver = chrome.openBrowser(url);
 			break;
 		case "edge":

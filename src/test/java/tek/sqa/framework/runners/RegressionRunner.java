@@ -9,10 +9,10 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        tags = "@Smoke",
+        tags = "@Regression",
         features = ("classpath:features"),
         glue="tek.sqa.framework.steps",
-        dryRun = true,
+        dryRun = false,
         plugin = {
                 "pretty",
                 "html:target/htmlReports/cucumber-pretty.html",
@@ -20,6 +20,6 @@ import io.cucumber.junit.CucumberOptions;
         },
         snippets = CAMELCASE,
         monochrome = true)
-public class TestRunner {
+public class RegressionRunner {
 
 }

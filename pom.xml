@@ -50,5 +50,47 @@
 			<version>1.33</version>
 		</dependency>
 	</dependencies>
-
+	<!-- Adding Plugins for running the test and generating cucumber reporting -->
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M7</version>
+				<configuration>
+					<!-- make runner to be parameterized and be able to pass different runner -->
+					<!-- while running with mvn commnad -->
+					<!-- maven command should be something like this " mvn clean test -Drunner=SmokeRunner "-->
+					<!-- usefull maven command is skipTests: it's gonna build the project but NOT running the test. -->
+					<includes>*/${runner}.java</includes>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>net.masterthought</groupId>
+				<artifactId>maven-cucumber-reporting</artifactId>
+				<version>5.7.1</version>
+				<executions>
+					<execution>
+						<id>execution</id>
+						<phase>test</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<projectName>Revamp Cucumber Framework</projectName>
+							<skip>false</skip>
+							<outputDirectory>${project.build.directory}/cucumber-report</outputDirectory>
+							<inputDirectory>${project.build.directory}/jsonReports</inputDirectory>
+							<jsonFiles>
+								<param>**/*.json</param>
+							</jsonFiles>
+							<parallelTesting>false</parallelTesting>
+							<!-- optional, set true to fail build on test failures -->
+							<checkBuildResult>false</checkBuildResult>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
