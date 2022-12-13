@@ -59,5 +59,17 @@ public class LoginPageSteps extends CommonUtilities {
 	    assertElementDisabled(CSRLoginPage.LOGIN_BUTTON);
 	}
 	
+	@When("user click on user portal button")
+	public void userClickOnUserPortalButton() {
+	   clickElement(CSRLoginPage.USER_PORTAL_BUTTON);
+	}
+
+	
+	@Then("Load Section subtitle is {string}")
+	public void loadSectionSubtitleIs(String expectedSubtitle) {
+	    String actual= getElementText(CSRLoginPage.LOGIN_SECTION_SUBTITLE);
+	    
+	    assertEqual(expectedSubtitle, actual);
+	}
 
 }

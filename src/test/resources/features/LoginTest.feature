@@ -23,7 +23,15 @@ Feature: Security Test for login
       | supervisor1 | tek_supervisor | User not found       |
       | supervisor  | tek-supervisor | Password Not Matched |
       | admin       | admin          | User not found       |
-@Regression	@Adhoc
+
+  @Regression @Adhoc
   Scenario: Test for Login button be disable without username and password.
     When user enter username "" and password ""
     Then login button should be disabled.
+
+  @Regression @switch_portal
+  Scenario: Testing navigate to User Portal.
+    Then Login page title is "TEK Insurance Portal"
+    Then Loaded Section is "Customer Service Portal"
+    When user click on user portal button
+    Then Load Section subtitle is "Access to your account"
