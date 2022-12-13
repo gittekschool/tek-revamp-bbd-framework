@@ -1,6 +1,7 @@
 package tek.sqa.framework.steps;
 
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import tek.sqa.framework.pages.CSRHomePage;
 import tek.sqa.framework.utilities.CommonUtilities;
 
@@ -11,6 +12,12 @@ public class CSRHomePageSteps extends CommonUtilities{
 	   String text = getElementText(CSRHomePage.PROFILE_NAME_BUTTON);
 	   String actualProfileName = text.substring(0, text.indexOf("account_circle")).trim();
 	   assertEqual(expectedProfileName, actualProfileName);
+	}
+	
+	@When("user logout")
+	public void userLogout() {
+	    clickElement(CSRHomePage.PROFILE_NAME_BUTTON);
+	    clickElement(CSRHomePage.LOGOUT_BUTTON);
 	}
 
 }
