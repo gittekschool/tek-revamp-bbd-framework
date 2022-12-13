@@ -17,4 +17,8 @@ public class CSRLoginPage {
 	public static final By LOGIN_BUTTON = By.id("loginButton");
 
 	public static final By BANNER_MESSAGE = By.xpath("//app-banner/div");
+	
+	public static final By USER_PORTAL_BUTTON = By.xpath("//mat-toolbar/a/span[contains(text(), 'User Portal')]/..");
+	
+	public static final By LOGIN_SECTION_SUBTITLE = By.xpath("//mat-card/mat-card-title");
 }
