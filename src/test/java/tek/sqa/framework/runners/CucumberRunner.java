@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        tags = "@switch_portal",
+        tags = "@Account_table",
         features = ("classpath:features"),
         glue="tek.sqa.framework.steps",
         dryRun = false,
