@@ -1,4 +1,4 @@
 ui: 
-   browser: "edge"
+   browser: "chrome"
    url: "https://happy-desert-0f05d560f.1.azurestaticapps.net/"
-   headless: false
+   headless: true
