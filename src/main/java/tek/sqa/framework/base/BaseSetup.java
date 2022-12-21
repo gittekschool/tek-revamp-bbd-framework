@@ -9,6 +9,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 
 import tek.sqa.framework.config.ChromeBrowser;
 import tek.sqa.framework.config.EdgeBrowser;
+import tek.sqa.framework.utilities.DatabaseUtility;
 import tek.sqa.framework.utilities.ReadYamlFiles;
 
 public class BaseSetup {
@@ -60,6 +61,14 @@ public class BaseSetup {
 	
 	public WebDriver getDriver() {
 		return driver;
+	}
+	
+	public DatabaseUtility getDbConnection() {
+		HashMap<String, Object> dbVariable = environmentVariables.getProprty("db");
+		String url = (String) dbVariable.get("url");
+		String username = (String) dbVariable.get("username");
+		String password = dbVariable.get("password").toString();
+		return new DatabaseUtility(url, username, password);
 	}
 
 }

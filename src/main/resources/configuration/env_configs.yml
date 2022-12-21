@@ -1,4 +1,9 @@
 ui: 
    browser: "chrome"
    url: "https://happy-desert-0f05d560f.1.azurestaticapps.net/"
-   headless: true
+   headless: false
+   
+db:
+   url: "jdbc:mysql://tek-database-server.mysql.database.azure.com:3306/tek_insurance_app"
+   username: "tek_student_user"
+   password: "MAY_2022"

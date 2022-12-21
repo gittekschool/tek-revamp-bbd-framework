@@ -49,6 +49,11 @@
 			<artifactId>snakeyaml</artifactId>
 			<version>1.33</version>
 		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.31</version>
+		</dependency>
 	</dependencies>
 	<!-- Adding Plugins for running the test and generating cucumber reporting -->
 	<build>
